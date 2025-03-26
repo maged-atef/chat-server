@@ -10,6 +10,10 @@ const bootstrap = async (app, express) => {
 
 
     connect_to_db();
+    app.get('/',(req, res, next)=>{
+       return res.status(200).json({ success: true, msg: 'welcome ' })
+
+    })
     app.use('/user', userRouter)
     app.all("*", (req, res, next) => {
         res.status(404).json({ success: false, msg: 'path not found ' })
